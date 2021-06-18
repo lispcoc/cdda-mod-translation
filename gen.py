@@ -4,9 +4,9 @@ import datetime
 
 class Const:
     PO_MSGCTXT = "msgctxt"
-    PO_MSGID = "原文"
-    PO_MSGID_PLURAL = "原文(複数形)"
-    PO_MSGSTR = "翻訳"
+    PO_MSGID = "msgid"
+    PO_MSGID_PLURAL = "msgid_plural"
+    PO_MSGSTR = "msgstr"
     DQ = "\""
     LF = "\n"
 
