@@ -1,7 +1,9 @@
 import csv
 import polib
+import datetime
 
 class Const:
+    PO_MSGCTXT = "msgctxt"
     PO_MSGID = "原文"
     PO_MSGID_PLURAL = "原文(複数形)"
     PO_MSGSTR = "翻訳"
@@ -19,24 +21,49 @@ class GenModPo:
             quotechar='"',
             skipinitialspace=True)
 
-        mod_po = polib.POFile()
+        mod_po = polib.POFile(
+            check_for_duplicates = True
+        )
 
         for row in mod_csv:
             # 単数形のみ
+            msgctxt = row.get(Const.PO_MSGCTXT)
+            if msgctxt == "":
+                msgctxt = None
+            msgid = row.get(Const.PO_MSGID)
+            msgid_plural = row.get(Const.PO_MSGID_PLURAL)
+            msgstr = row.get(Const.PO_MSGSTR)
             if row.get(Const.PO_MSGID_PLURAL) == "":
                 entry = polib.POEntry(
-                    msgid = row.get(Const.PO_MSGID),
-                    msgstr = row.get(Const.PO_MSGSTR))
+                    msgctxt = msgctxt,
+                    msgid = msgid,
+                    msgstr = msgstr)
             # 複数形あり
             else:
                 entry = polib.POEntry(
-                    msgid = row.get(Const.PO_MSGID),
-                    msgid_plural = row.get(Const.PO_MSGID_PLURAL),
-                    msgstr_plural = {0: row.get(Const.PO_MSGSTR)})
+                    msgctxt = msgctxt,
+                    msgid = msgid,
+                    msgid_plural = msgid_plural,
+                    msgstr_plural = {0: msgstr})
 
             mod_po.append(entry)
 
         file_in.close()
+
+        # ヘッダの生成
+        dt_now = datetime.datetime.now()
+        mod_po.metadata = {
+            'Project-Id-Version': 'cataclysm-dda mod',
+            'Report-Msgid-Bugs-To': 'https://github.com/lispcoc ',
+            'POT-Creation-Date': dt_now.isoformat(),
+            'PO-Revision-Date': dt_now.isoformat(),
+            'Last-Translator': 'N/A',
+            'Language-Team': 'N/A',
+            'MIME-Version': '1.0',
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Content-Transfer-Encoding': '8bit',
+        }
+
         mod_po.save(fpath="mod.po")
 
     def unused():
