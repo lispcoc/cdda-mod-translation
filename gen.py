@@ -12,8 +12,12 @@ class Const:
     LF = "\n"
 
 class GenModPo:
+    def __init__(self, in_csv = "./mod.csv", out_po = "mod.po"):
+        self.in_csv = in_csv
+        self.out_po = out_po
+
     def main(self):
-        file_in = open("./mod.csv", "r", encoding="utf-8", errors="", newline="" )
+        file_in = open(in_csv, "r", encoding="utf-8", errors="", newline="" )
 
         mod_csv = csv.DictReader(
             file_in, delimiter=",",
@@ -65,7 +69,7 @@ class GenModPo:
             'Content-Transfer-Encoding': '8bit',
         }
 
-        mod_po.save(fpath="mod.po")
+        mod_po.save(fpath = out_po)
 
     def unused(self):
         base_po = polib.pofile('ja.po', check_for_duplicates = True)
