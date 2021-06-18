@@ -2,6 +2,10 @@
 import csv
 import polib
 import datetime
+import locale
+​
+locale.setlocale(locale.LC_CTYPE, ('C')) 
+print(locale.getpreferredencoding(False))
 
 class Const:
     PO_MSGCTXT = "msgctxt"
@@ -17,7 +21,7 @@ class GenModPo:
         self.out_po = out_po
 
     def main(self):
-        file_in = open(self.in_csv, "r", 'utf-8')
+        file_in = open(self.in_csv, "r", encoding='utf-8')
 
         mod_csv = csv.DictReader(
             file_in, delimiter=",",
