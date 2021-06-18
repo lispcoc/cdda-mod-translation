@@ -4,8 +4,8 @@ import polib
 import datetime
 import locale
 
-locale.setlocale(locale.LC_CTYPE, ('C'))
 print(locale.getpreferredencoding(False))
+locale.setlocale(locale.LC_CTYPE, ('utf-8'))
 
 class Const:
     PO_MSGCTXT = "msgctxt"
