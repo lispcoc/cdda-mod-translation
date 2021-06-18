@@ -3,6 +3,10 @@ import csv
 import polib
 import datetime
 import locale
+import sys, codecs
+import io
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 print(locale.getpreferredencoding(False))
 locale.setlocale(locale.LC_CTYPE, ('ja_JP.UTF-8'))
