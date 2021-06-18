@@ -12,7 +12,7 @@ class Const:
     LF = "\n"
 
 class GenModPo:
-    def main():
+    def main(self):
         file_in = open("./mod.csv", "r", encoding="utf-8", errors="", newline="" )
 
         mod_csv = csv.DictReader(
@@ -67,7 +67,7 @@ class GenModPo:
 
         mod_po.save(fpath="mod.po")
 
-    def unused():
+    def unused(self):
         base_po = polib.pofile('ja.po', check_for_duplicates = True)
         entries_to_add = []
 
