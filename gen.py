@@ -3,8 +3,8 @@ import csv
 import polib
 import datetime
 import locale
-​
-locale.setlocale(locale.LC_CTYPE, ('C')) 
+
+locale.setlocale(locale.LC_CTYPE, ('C'))
 print(locale.getpreferredencoding(False))
 
 class Const:
