@@ -98,4 +98,6 @@ class GenModPo:
         file_out.write(base_po.__unicode__())
         file_out.close()
 
-GenModPo.main()
+m = GenModPo()
+
+m.main()
