@@ -30,7 +30,10 @@ class GenModPo:
             check_for_duplicates = True
         )
 
+        num = 0
         for row in mod_csv:
+            print (num , "/", len(mod_csv))
+            num = num + 1
             # 単数形のみ
             msgctxt = row.get(Const.PO_MSGCTXT)
             if msgctxt == "":
