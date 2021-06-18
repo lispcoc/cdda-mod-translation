@@ -5,7 +5,7 @@ import datetime
 import locale
 
 print(locale.getpreferredencoding(False))
-locale.setlocale(locale.LC_CTYPE, ('UTF-8'))
+locale.setlocale(locale.LC_CTYPE, ('ja_JP.UTF-8'))
 
 class Const:
     PO_MSGCTXT = "msgctxt"
