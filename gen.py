@@ -27,13 +27,14 @@ class GenModPo:
             skipinitialspace=True)
 
         mod_po = polib.POFile(
-            check_for_duplicates = True
+            check_for_duplicates = True,
+            encoding = utf-8
         )
 
         num = 0
         for row in mod_csv:
             if num % 100 == 0:
-                print (num , "/", len(list(mod_csv)))
+                print num , "/", len(list(mod_csv))
             num = num + 1
             # 単数形のみ
             msgctxt = row.get(Const.PO_MSGCTXT)
