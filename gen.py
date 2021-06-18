@@ -28,7 +28,7 @@ class GenModPo:
 
         mod_po = polib.POFile(
             check_for_duplicates = True,
-            encoding = utf-8
+            encoding = "utf-8"
         )
 
         num = 0
