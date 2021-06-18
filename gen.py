@@ -32,12 +32,14 @@ class GenModPo:
                 entry = polib.POEntry(
                     msgid = row.get(Const.PO_MSGID),
                     msgid_plural = row.get(Const.PO_MSGID_PLURAL),
-                    msgstr_plural = [row.get(Const.PO_MSGSTR)])
+                    msgstr_plural = {0: row.get(Const.PO_MSGSTR)})
 
             mod_po.append(entry)
 
         file_in.close()
+        mod_po.save(fpath="mod.po")
 
+    def unused():
         base_po = polib.pofile('ja.po', check_for_duplicates = True)
         entries_to_add = []
 
